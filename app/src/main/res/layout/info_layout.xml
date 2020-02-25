@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <TableRow
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:text="Quantity" />
+
+        <TextView
+            android:id="@+id/tv_detail_qty"
+            tools:text="18"/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:text="Category" />
+
+        <TextView
+            android:id="@+id/tv_detail_category"
+            tools:text="Laptop"/>
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="Merchant " />
+
+        <TextView
+            android:id="@+id/tv_detail_merch"
+            tools:text="Electronic Shop"/>
+
+    </TableRow>
+
+</TableLayout>
