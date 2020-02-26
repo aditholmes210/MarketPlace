@@ -17,6 +17,7 @@ import com.aditas.marketplace.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import static com.aditas.marketplace.Activity.Detail.EXTRA_DATA;
@@ -51,7 +52,7 @@ public class Adapt extends RecyclerView.Adapter<Adapt.MainHolder>{
     class MainHolder extends RecyclerView.ViewHolder{
         private Context ctx;
         private ImageView img;
-        private TextView prodName, MerchName;
+        private TextView prodName, merchName, price;
         private ProgressBar progImg;
         private Product prot;
 
@@ -59,8 +60,9 @@ public class Adapt extends RecyclerView.Adapter<Adapt.MainHolder>{
             super(itemView);
             img = itemView.findViewById(R.id.img_prod);
             prodName = itemView.findViewById(R.id.tv_prod_name);
-            MerchName = itemView.findViewById(R.id.tv_merch_name);
+            merchName = itemView.findViewById(R.id.tv_merch_name);
             progImg = itemView.findViewById(R.id.progress_image);
+            price = itemView.findViewById(R.id.tv_merch_price);
 
             ctx = itemView.getContext();
             itemView.setOnClickListener(listen);
@@ -68,7 +70,9 @@ public class Adapt extends RecyclerView.Adapter<Adapt.MainHolder>{
         public void onBInd(Product product) {
             this.prot=product;
             prodName.setText(product.getName());
-            MerchName.setText(product.getMerch().getName());
+            merchName.setText(product.getMerch().getName());
+            price.setText(String.valueOf(toMoney(product.getPrice())));
+
             Picasso.get()
                     .load("http://210.210.154.65:4444/storage/"+product.getImage())
                     .error(R.drawable.ic_launcher_background)
@@ -94,5 +98,10 @@ public class Adapt extends RecyclerView.Adapter<Adapt.MainHolder>{
                 ctx.startActivity(i);
             }
         };
+    }
+
+    String toMoney(long money){
+        DecimalFormat dec = new DecimalFormat("#,###");
+        return "Rp. " + dec.format(money);
     }
 }

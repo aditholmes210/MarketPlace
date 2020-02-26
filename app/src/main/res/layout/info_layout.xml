@@ -40,4 +40,26 @@
 
     </TableRow>
 
+    <TableRow>
+
+        <TextView
+            android:text="Price " />
+
+        <TextView
+            android:id="@+id/tv_detail_price"
+            tools:text="Electronic Shop"/>
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="Description " />
+
+        <TextView
+            android:id="@+id/tv_detail_desc"
+            tools:text="Electronic Shop"/>
+
+    </TableRow>
+
 </TableLayout>

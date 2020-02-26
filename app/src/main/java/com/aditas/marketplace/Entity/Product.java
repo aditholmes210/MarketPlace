@@ -20,8 +20,12 @@ public class Product implements Parcelable {
     private Merchant merch;
     @SerializedName("category")
     private Category catg;
+    @SerializedName("productPrice")
+    private int price;
+    @SerializedName("productDesc")
+    private String desc;
 
-    public Product(int id, int qty, String name, String slug, String image, Merchant merch, Category catg){
+    public Product(int id, int qty, String name, String slug, String image, Merchant merch, Category catg, int price, String desc){
         this.id = id;
         this.qty = qty;
         this.name = name;
@@ -29,6 +33,8 @@ public class Product implements Parcelable {
         this.image = image;
         this.merch = merch;
         this.catg = catg;
+        this.price = price;
+        this.desc = desc;
     }
 
     public int getId() {
@@ -59,6 +65,14 @@ public class Product implements Parcelable {
         return catg;
     }
 
+    public int getPrice(){
+        return price;
+    }
+
+    public String getDesc(){
+        return desc;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -73,6 +87,8 @@ public class Product implements Parcelable {
         dest.writeString(this.image);
         dest.writeParcelable(this.merch, flags);
         dest.writeParcelable(this.catg, flags);
+        dest.writeInt(this.price);
+        dest.writeString(this.desc);
     }
 
     protected Product(Parcel in) {
@@ -83,6 +99,8 @@ public class Product implements Parcelable {
         this.image = in.readString();
         this.merch = in.readParcelable(Merchant.class.getClassLoader());
         this.catg = in.readParcelable(Category.class.getClassLoader());
+        this.price = in.readInt();
+        this.desc = in.readString();
     }
 
     public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
